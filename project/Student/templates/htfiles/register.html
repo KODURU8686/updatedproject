@@ -1,0 +1,32 @@
+{% extends 'htfiles/header.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="card col-md-6 mt-4 mx-auto shadow-lg">
+		<h3 class="bg-warning text-dark text-center p-2 border rounded mt-2">Registration</h3>
+		<div class="card-body">
+			<form method="POST">
+				<!-- {{u.as_p}} -->
+				{% csrf_token %}
+				<table class="table table-borderless">
+					{% for k in t %}
+					<tr>
+						<td>{{k}}</td>
+					</tr>
+					{% endfor %}
+				</table>
+				<div class="row">
+						<div class="col">
+							<a href="{% url 'lg' %}" class="form-control col-sm btn btn-info">Existing User</a>
+						</div>
+
+						
+							<input type="submit" class="form-control btn btn-success col-sm-4" name="subscribe">
+						
+					</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

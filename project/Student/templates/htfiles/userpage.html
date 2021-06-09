@@ -1,0 +1,30 @@
+{% extends 'htfiles/header.html' %}
+{% block title %} View Medicine {% endblock %}
+{% block content %}
+<div class="container">
+	<div class="card col-md-6 mt-4 mx-auto shadow-lg">
+		<h3 class="bg-warning text-dark text-center p-2 border rounded mt-2">Donate Medicine</h3>
+		<div class="card-body">
+			<form method="POST">
+				
+				{% csrf_token %}
+				{{s.as_p}}
+				{{h.as_p}}
+
+				<!-- <table class="table table-borderless">
+					{% for k in h %}
+					<tr>
+						<td>{{k}}</td>
+					</tr>
+					{% endfor %}
+				</table> -->
+                        
+						<div class="col">
+							<input type="submit" class="form-control btn btn-success btn-block" value="Submit">
+						</div>
+					</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

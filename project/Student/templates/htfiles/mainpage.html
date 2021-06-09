@@ -1,0 +1,18 @@
+{% extends 'htfiles/header.html' %}
+{% block title %}Main Page{% endblock %}
+{% block content %}
+<div class="container mt-5">
+	<div class="jumbotron">
+		{% if user.is_superuser %}
+		<h3>Super User</h3>
+		{% elif user.role == 1 %}
+		<h3>Hi {{user.username}} Donor, Here are your Donations... :)</h3>
+		<h3>view the organizations <a href="{% url 'details' %}">Click here</a></h3>
+		{% elif user.role == 2 %}
+		<h3>Organiser</h3>
+		{% else %}
+		<h3>Guest</h3>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

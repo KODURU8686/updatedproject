@@ -1,0 +1,36 @@
+{% extends 'htfiles/header.html' %}
+{% block title %}Org details {% endblock %}
+{% block content %}
+<div class="container">
+	<div class="jumbotron mt-4">
+		<h3>your organisations</h3>
+	</div>
+	<div class="card col-md mt-2 shadow-lg">
+		<div class="card-body">
+
+			<table class="table table-borderless table-borderless-center">
+				<tr class="bg-dark text-light text-center">
+					<th>S.No</th>
+					<th>orgnization name</th>
+					<th>Founder Name</th>
+					<th>Established On</th>
+					<th>Actions</th>
+				</tr>
+				{% for i in v %}
+				<tr>
+				<td>{{forloop.counetr}}</td>
+				<td>{{i.org_name}}</td>
+				<td>{{i.found_name}}</td>
+				<td>{{i.est_date}}</td>
+				<td  colspan="3">
+					<a href="#" class="btn btn-ouline-info my-2">Donate
+					</a>
+					<a href="#" class="btn btn-outline-success my-2">JoinUs</a>
+				</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

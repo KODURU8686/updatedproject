@@ -1,0 +1,60 @@
+{% extends 'htfiles/header.html' %}
+{% block title %}Main{% endblock %}
+{% block content %}
+<div class="container-fluid" style="margin-top: 83px;">
+	<form class="d-flex" method="POST" action="{% url 'srch' %}">
+          {% csrf_token %}
+        <input type="search" class="form-control me-2" placeholder="Search" name="searched">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      
+	<table class="table table-striped">
+		
+		<tr>
+					<th>S.No</th>
+					<th>Pharamancy_name</th>
+					<th>Medicine name</th>
+					<th>Quantity</th>
+					<th>Category</th>
+					<th>Manifacturing date</th>
+					<!-- <th>Entry date</th> -->
+					<th>Expiry date</th>
+					<th>Remaining days</th>
+					<th>Remaining tablets</th>
+				</tr>
+	{% if user.export.is_medicinist %}
+		{% for k in it %}
+					
+						<h3><span>{% if k.is_status == 0 %}<span class="bg-danger text-light p-1 border rounded">Available</span>{% else %}<span class="bg-primary text-light border rounded p-1">Out of Stock</span>{% endif%}</span></h3>
+
+		{% endfor %}
+		
+		{% else %}
+		{% for k in d %}
+
+			<tr>
+				    <td>{{ forloop.counter }}</td>
+					<td>{{k.1}}</td>
+					<td>{{k.2}}</td>
+					<td>{{k.3}}</td>
+					<td>{{k.4}}</td>
+					<td>{{k.5}}</td>
+					<!-- <td>{{k.6}}</td> -->
+					<td>{{k.7}}</td>
+					<td>{{k.8|cut:", 0:00:00"}}</td>
+					<!-- <td>{{k.7|cut:", 0:00:00"}}</td> -->
+					<!-- <td><a class="btn btn-primary mx-1" href="#">Edit</a><a class="btn btn-danger mx-1" href="#">Delete</a></td> -->
+					
+					<!-- </tr> -->
+				
+				<td><h6>{% if k.3 == 0 %}<span class="bg-success text-light p-1 border rounded">Out of stock</span>{% else %}<span class="btn btn-warning text-light border rounded p-1">Available</span>{% endif%}</span></h6></td>
+				
+				<td><a href="{% url 'rqt' k.0 %}" class="bg-primary text-light p-1 border rounded btn btn-block mx-auto">Request</a></td>
+			</tr>
+				{% endfor %}
+
+			</table>
+
+	{% endif %}
+	</div>
+{% endblock %}

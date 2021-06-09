@@ -1,0 +1,76 @@
+{% extends 'htfiles/header.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style type="text/css">
+  span{
+    position: absolute;
+    right: 48px;
+    transform: translate(0,-50%);
+    top: 49%;
+    cursor: pointer;
+  }
+  #hide{
+    display: none;
+  }
+  .InputWithIcon input[type=text]
+  {
+    padding-left: 40px;
+  }
+  .InputWithIcon {
+    position: relative;
+  }
+  .InputWithIcon i {
+    position: absolute;
+    left: 3;
+    top: -4px;
+    padding: 9px 8px;
+    color: #aaa;
+    transition: 3s;
+  }
+  .InputWithIcon input[type=text]:focus+i{color: dodgerBlue;
+  }
+</style>
+
+<div class="conatiner">
+  <div class="card col-md-4 mx-auto shadow-lg mt-5">
+    <h3 class="text-white bg-info border rounded text-center p-2 my-2 mt-4">Login</h3>
+    <div class="card-body">
+      <form method="POST">
+        {% csrf_token %}
+        <!-- {{form.as_p}} -->
+        <input type="text" name="username" placeholder="Enter username" class="form-control my-2">
+        <input type="password" name="password" placeholder="Enter password" class="form-control my-2">
+        <div class="row">
+          <div class="col">
+            <input type="submit" value="Login" class="col-md btn  btn-success my-3">
+          </div>
+          <div class="col">
+            <a href="{% url 'nreg' %}" class="btn btn-info btn-block my-3">NewUser</a>
+          </div>
+          
+        </div>
+        
+       <a href="{% url 'reset_password' %}" class="btn btn-danger text-white btn-block my-2">Forget Password</a>
+
+
+      </form>
+     
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
+
